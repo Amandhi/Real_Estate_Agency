@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  As recommended by Google, we use a ConstraintLayout
+  as the root element
+  We add a padding all around using the padding attribute
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    tools:context=".view.AddPropertyActivity"
+    >
+
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toTopOf="@id/radio_grp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        />
+
+
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio_grp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/surface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatar">
+        <TextView
+            android:id="@+id/property_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            app:layout_constraintBottom_toTopOf="@id/radio_grp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            />
+
+
+        <RadioButton android:id="@+id/radio_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House"/>
+            <!--android:onClick="onRadioButtonClicked"-->
+        <RadioButton android:id="@+id/radio_apt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appartment"/>
+        <!--android:onClick="onRadioButtonClicked"-->
+        <RadioButton android:id="@+id/radio_office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Office"/>
+        <!--android:onClick="onRadioButtonClicked"-->
+    </RadioGroup>
+
+
+
+    <EditText
+        android:id="@+id/surface"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Surface in m2"
+        android:inputType="number"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rooms"
+        app:layout_constraintTop_toBottomOf="@id/radio_grp"
+        />
+
+
+    <EditText
+        android:id="@+id/rooms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Number of rooms"
+        android:inputType="number"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/address"
+        app:layout_constraintStart_toEndOf="@id/surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_grp"
+        />
+
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Full address"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:lines="4"
+        app:layout_constraintBottom_toTopOf="@id/save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rooms"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/address"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

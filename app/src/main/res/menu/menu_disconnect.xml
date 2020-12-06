@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <!--
+    we add a first item which is hidden by default
+  -->
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_account"
+        android:title="Profile"
+        app:showAsAction="always">
+
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" >
+            <item android:id="@+id/disconnect"
+                android:title="Disconnect"
+                app:showAsAction="ifRoom|withText" />
+
+        </menu>
+    </item>
+
+
+</menu>

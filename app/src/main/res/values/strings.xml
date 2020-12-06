@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Real Estate Agency App</string>
+    <string name="cannot_add_property">Cannot add the property</string>
+</resources>

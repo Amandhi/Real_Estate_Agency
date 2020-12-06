@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <!--
+      we add a second item which is hidden by default
+    -->
+    <item
+        android:id="@+id/delete_property"
+        android:title="Delete"
+        app:showAsAction="never"
+        />
+
+    <!--
+      we add a third item which is hidden by default
+    -->
+    <item
+        android:id="@+id/update_property"
+        android:title="Update"
+        app:showAsAction="never"
+        />
+</menu>
