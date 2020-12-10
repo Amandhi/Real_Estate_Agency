@@ -55,7 +55,7 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
         PropertyTypeListCreation();
     }
 
-    public void saveProperty(int propertyType, int propertySurface, int propertyRooms,
+    public void saveProperty(Integer propertyType, int propertySurface, int propertyRooms,
                          String propertyAddress)
     {
 
@@ -78,7 +78,7 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
         }*/
     }
 
-    private void persistProperty(int propertyType, int propertySurface, int propertyRooms,
+    private void persistProperty(Integer propertyType, int propertySurface, int propertyRooms,
                                  String propertyAddress)
     {
         PropertyRepository.getInstance(getApplication()).addProperty(new Property(propertyType, propertySurface, propertyRooms, propertyAddress));

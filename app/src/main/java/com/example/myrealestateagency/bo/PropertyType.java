@@ -13,7 +13,7 @@ public class PropertyType {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "TypeID")
-    public int TypeID;
+    public Integer TypeID;
 
     @NonNull
     @ColumnInfo(name = "Type")

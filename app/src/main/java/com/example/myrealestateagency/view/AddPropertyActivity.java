@@ -131,7 +131,7 @@ final public class AddPropertyActivity extends AppCompatActivity implements View
         final int pRooms = Integer.parseInt(propertyRooms.getText().toString());
         final String pAddress = propertyAddress.getEditableText().toString();
         //final int pType = viewModel.CheckSpinnerSelection(propertyType);
-        final int pType = viewModel.checkRadioButtonClick(radioHouse,radioAprmt,radioOffice); // We retrieve here the number (TypeID) associated to the property type chosen by the agent when adding a property
+        final Integer pType = viewModel.checkRadioButtonClick(radioHouse,radioAprmt,radioOffice); // We retrieve here the number (TypeID) associated to the property type chosen by the agent when adding a property
 
         viewModel.saveProperty(pType,pSurface, pRooms, pAddress);
     }
