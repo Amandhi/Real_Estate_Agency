@@ -23,5 +23,10 @@ public class PropertyStatus {
         StatusID=0;
         this.Status = Status;}
 
+    @Override
+    public String toString() {
+        return Status;
+    }
+
 
 }

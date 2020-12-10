@@ -35,7 +35,7 @@ public final class PropertiesAdapter
                 super(itemView);
 
                 //We find the references of the widgets
-                propertyType = itemView.findViewById(R.id.name);
+                propertyType = itemView.findViewById(R.id.property_type);
                 address = itemView.findViewById(R.id.address);
                 surface = itemView.findViewById(R.id.surface);
                 rooms = itemView.findViewById(R.id.rooms);
@@ -43,10 +43,10 @@ public final class PropertiesAdapter
 
             public void update(final Property property) {
             //We update the UI binding the current property to the current item
-            propertyType.setText(property.PropertyType);
+            propertyType.setText(String.valueOf(property.PropertyType));
             address.setText(property.Address);
-            surface.setText(property.PropertySurface);
-            rooms.setText(property.Number_of_Rooms);
+            surface.setText(String.valueOf(property.PropertySurface));
+            rooms.setText(String.valueOf(property.Number_of_Rooms));
 
             //We handle the click on the current item in order to display a new activity
             itemView.setOnClickListener(new View.OnClickListener()

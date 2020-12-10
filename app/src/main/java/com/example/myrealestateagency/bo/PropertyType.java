@@ -25,4 +25,8 @@ public class PropertyType {
 
 
 
+    @Override
+    public String toString() {
+        return Type;
+    }
 }

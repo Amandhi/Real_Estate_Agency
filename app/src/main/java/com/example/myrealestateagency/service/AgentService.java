@@ -20,6 +20,7 @@ final public class AgentService implements IAgentService {
     public void addAgent(Agent agent)
     {
         agents.add(agent);
+
     }
 
 

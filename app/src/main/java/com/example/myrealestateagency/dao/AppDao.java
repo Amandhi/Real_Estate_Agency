@@ -49,11 +49,21 @@ public interface AppDao extends IPropertyService, IAgentService, IPropertyStatus
 
     @Override
     @Query("SELECT * FROM PropertyStatus")
-    PropertyStatus getStatus();
+    List<PropertyStatus> getStatus();
+
+    @Override
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addStatus(PropertyStatus pStatus);
+
 
     @Override
     @Query("SELECT * FROM PropertyType")
-    PropertyType getType();
+    List<PropertyType> getType();
+
+    @Override
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void addType(PropertyType pType);
+
 
 
 }

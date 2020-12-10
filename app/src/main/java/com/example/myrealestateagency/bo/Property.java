@@ -12,16 +12,16 @@ import java.io.Serializable;
 //This is an Entity
 @Entity(tableName = "Property",
         foreignKeys={
-        /*@ForeignKey(entity = Agent.class,
+       /* @ForeignKey(entity = Agent.class,
                    parentColumns = "AgentID",
                     childColumns = "Agent_in_charge"),*/
                 @ForeignKey(entity = PropertyType.class,
                      parentColumns = "TypeID",
                      childColumns = "PropertyType"),
 
-                @ForeignKey(entity= PropertyStatus.class,
+                /*@ForeignKey(entity= PropertyStatus.class,
                             parentColumns = "StatusID",
-                            childColumns = "PropertyStatus")
+                            childColumns = "PropertyStatus")*/
 
         })
 
@@ -33,7 +33,7 @@ public class Property implements Serializable {
 
 
     @ColumnInfo(name = "PropertyType")
-    public Integer PropertyType;
+    public int PropertyType;
 
     /*@NonNull
     @ColumnInfo(name = "Price")
@@ -41,11 +41,11 @@ public class Property implements Serializable {
 
     @NonNull
     @ColumnInfo(name = "PropertySurface")
-    public Integer PropertySurface;
+    public int PropertySurface;
 
     @NonNull
     @ColumnInfo(name = "Number_of_Rooms")
-    public Integer Number_of_Rooms;
+    public int Number_of_Rooms;
 
     @NonNull
     @ColumnInfo(name = "Address")
@@ -69,7 +69,7 @@ public class Property implements Serializable {
         Agent_in_charge = agent_in_charge;
     }
 */
-    public Property(Integer PropertyType, Integer PropertySurface, Integer Number_of_Rooms, @NonNull String Address) {
+    public Property(int PropertyType, int PropertySurface, int Number_of_Rooms, @NonNull String Address) {
         PropertyID=0;
         this.PropertyType=PropertyType;
         this.PropertySurface = PropertySurface;
