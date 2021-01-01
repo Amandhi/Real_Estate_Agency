@@ -97,10 +97,35 @@ This page opens up when the user clicks on a property view holder from the home 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintEnd_toStartOf="@id/btn_price_converter"
+            app:layout_constraintStart_toEndOf="@id/price_icon"
+            app:layout_constraintTop_toBottomOf="@id/property_type"
+            />
+
+        <Button
+            android:id="@+id/btn_price_converter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_marginStart="4dp"
+            android:text="$ Convert"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/rounded_corners_btn"
+            app:layout_constraintTop_toBottomOf="@id/property_type"
+            app:layout_constraintStart_toEndOf="@id/property_price"
+            app:layout_constraintEnd_toStartOf="@id/property_converted_price"/>
+
+        <TextView
+            android:id="@+id/property_converted_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/price_icon"
+            app:layout_constraintStart_toEndOf="@id/btn_price_converter"
             app:layout_constraintTop_toBottomOf="@id/property_type"
             />
 
@@ -273,6 +298,20 @@ This page opens up when the user clicks on a property view holder from the home 
 
             />
 
+        <!-- Simulator button-->
+        <Button
+            android:id="@+id/btn_simulator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Simulator"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/rounded_corners_btn"
+            app:layout_constraintTop_toBottomOf="@id/agentInCharge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
         <!--TextView to display the property's creation date -->
         <TextView
             android:id="@+id/creation_date"
@@ -287,7 +326,7 @@ This page opens up when the user clicks on a property view holder from the home 
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/agentInCharge"
+            app:layout_constraintTop_toBottomOf="@id/btn_simulator"
 
 
             />

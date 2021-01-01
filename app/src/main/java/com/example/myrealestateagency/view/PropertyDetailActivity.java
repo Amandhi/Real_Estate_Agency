@@ -6,17 +6,15 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -27,16 +25,22 @@ import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myrealestateagency.R;
-import com.example.myrealestateagency.bo.Agent;
 import com.example.myrealestateagency.bo.Property;
 import com.example.myrealestateagency.preferences.AppPreferences;
 import com.example.myrealestateagency.repository.PropertyRepository;
+import com.example.myrealestateagency.retrofit.RetrofitBuilder;
+import com.example.myrealestateagency.retrofit.RetrofitInterface;
 import com.example.myrealestateagency.viewmodel.PropertyDetailActivityViewModel;
+import com.google.gson.JsonObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
-final public class PropertyDetailActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+final public class PropertyDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String PROPERTY_EXTRA = "propertyExtra";
 
@@ -56,6 +60,8 @@ final public class PropertyDetailActivity extends AppCompatActivity {
     private TextView propertyType;
 
     private TextView propertyPrice;
+
+    private TextView convertedPrice;
 
     private TextView propertySurface;
 
@@ -79,6 +85,8 @@ final public class PropertyDetailActivity extends AppCompatActivity {
 
 
 
+
+
     private PropertyDetailActivityViewModel viewModel;
 
     @Override
@@ -95,6 +103,7 @@ final public class PropertyDetailActivity extends AppCompatActivity {
         propertyID = findViewById(R.id.propertyID);
         propertyType = findViewById(R.id.property_type);
         propertyPrice=findViewById(R.id.property_price);
+        convertedPrice = findViewById(R.id.property_converted_price);
         propertySurface = findViewById(R.id.surface);
         propertyRooms = findViewById(R.id.rooms);
         propertyAddress = findViewById(R.id.address);
@@ -108,6 +117,9 @@ final public class PropertyDetailActivity extends AppCompatActivity {
 
 
         viewModel = new ViewModelProvider(this, new SavedStateViewModelFactory(getApplication(), this, getIntent().getExtras())).get(PropertyDetailActivityViewModel.class);
+
+        findViewById(R.id.btn_price_converter).setOnClickListener(this);
+        findViewById(R.id.btn_simulator).setOnClickListener(this);
 
 
         observeProperty();
@@ -333,5 +345,47 @@ final public class PropertyDetailActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_price_converter:
+                //final String propertyPrice€ = propertyPrice.getText().toString().substring(8);
+                final String propertyPrice€ = propertyPrice.getText().toString().replaceAll("[^0-9]", "");
+                RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
+                Call<JsonObject> call = retrofitInterface.getPriceConversion();
+                call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    JsonObject res = response.body();
+                    JsonObject rates = res.getAsJsonObject("rates");
+                    double price€ = Double.valueOf(propertyPrice€);
+                    double multiplier = Double.valueOf(rates.get("USD").toString());
+                    double price$ = price€*multiplier;
+                    convertedPrice.setText(new DecimalFormat("##.##").format(price$) + " $");
 
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                }
+            });
+                 break;
+
+            case R.id.btn_simulator:
+                final String pType = propertyType.getText().toString().substring(7);
+                final String pPrice = propertyPrice.getText().toString().replaceAll("[^0-9]", "");
+                final String pID = propertyID.getText().toString();
+
+                final Intent intent = new Intent(this, LoanSimulatorActivity.class);
+                intent.putExtra("pID", pID);
+                intent.putExtra("pType", pType);
+                intent.putExtra("pPrice", pPrice);
+                startActivity(intent);
+                break;
+        }
+
+
+
+    }
 }

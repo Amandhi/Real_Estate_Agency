@@ -18,6 +18,7 @@
     <string name="detail_property_page_title">Details</string>
     <string name="update_property_page_title">Update Property</string>
     <string name="search_property_page_title">Search Property</string>
+    <string name="loan_page_title">Loan Simulator</string>
     <string name="no_results">Ouups ! No results matching !</string>
 
 
