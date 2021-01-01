@@ -1,4 +1,24 @@
 <resources>
-    <string name="app_name">Real Estate Agency App</string>
-    <string name="cannot_add_property">Cannot add the property</string>
+    <string name="app_name">Estates</string>
+    <string name="enter_valid_type">Please enter a valid type</string>
+    <string name="enter_valid_price">Please enter a valid price</string>
+    <string name="enter_valid_surface">Please enter a surface value</string>
+    <string name="enter_valid_room">Please enter number of rooms</string>
+    <string name="enter_valid_address">Please enter a valid address</string>
+    <string name="enter_valid_description">Please enter a description</string>
+    <string name="enter_valid_status">Please select a status</string>
+    <string name="enter_valid_agent">Please choose an agent in charge</string>
+    <string name="fill_all_fields">Please fill in all the fields</string>
+    <string name="notification_title">Real Estate App</string>
+    <string name="add_notification_message"> added succesfully !</string>
+    <string name="delete_notification_message"> deleted succesfully !</string>
+    <string name="update_notification_message"> updated succesfully !</string>
+    <string name="property_list_page_title">Home</string>
+    <string name="add_property_page_title">New Property</string>
+    <string name="detail_property_page_title">Details</string>
+    <string name="update_property_page_title">Update Property</string>
+    <string name="search_property_page_title">Search Property</string>
+    <string name="no_results">Ouups ! No results matching !</string>
+
+
 </resources>

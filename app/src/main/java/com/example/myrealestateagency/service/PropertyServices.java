@@ -28,10 +28,5 @@ final public class PropertyServices implements IPropertyService {
         properties.add(property);
     }
 
-    /*
-    @Override
-    public List<Property> updateProperty()
-    {
-        //implementer
-    }*/
+
 }

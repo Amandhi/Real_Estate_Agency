@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#FFF</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorApartmentLayout">#ECB5B7</color>
+    <color name="colorAddButton">#E6A919</color>
+    <color name="colorPressedAddButton">#ffd480</color>
+    <color name="colorTint">#E8C197</color>
+
 </resources>

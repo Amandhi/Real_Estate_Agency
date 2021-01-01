@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menu available only on a property's detail page. This menu allows to either update or delete a given property -->
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,17 +10,29 @@
       we add a second item which is hidden by default
     -->
     <item
-        android:id="@+id/delete_property"
-        android:title="Delete"
-        app:showAsAction="never"
-        />
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="always">
+
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" >
+            <item android:id="@+id/delete_property"
+                android:title="Delete"
+                app:showAsAction="ifRoom|withText" />
+            <item android:id="@+id/update_property"
+                android:title="Update"
+                app:showAsAction="ifRoom|withText" />
+
+
+
+        </menu>
+
+    </item>
 
     <!--
       we add a third item which is hidden by default
     -->
-    <item
-        android:id="@+id/update_property"
-        android:title="Update"
-        app:showAsAction="never"
-        />
+
 </menu>
+

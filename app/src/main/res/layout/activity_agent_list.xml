@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  As recommended by Google, we use a ConstraintLayout
-  as the root element
-  We add a padding all around using the padding attribute
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Page that contains the profiles of the agents initialised in our database.
+Clicking on a profile, enables to user to log in and start using all the fonctionalities of the app.
+This pages shows up when the app is used for the first time and whenever the user disconnects. -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,16 +11,33 @@
     tools:context=".view.AgentListActivity"
     >
 
+
+    <!--Welcome message -->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Welcome ! Choose a profil to start working !"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

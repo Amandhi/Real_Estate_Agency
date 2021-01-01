@@ -15,18 +15,16 @@ public class PropertyType {
     @ColumnInfo(name = "TypeID")
     public Integer TypeID;
 
-    @NonNull
+
     @ColumnInfo(name = "Type")
     public final String Type;
 
-    public PropertyType(@NonNull String Type) {
+    public PropertyType(String Type) {
         TypeID=0;
         this.Type = Type;}
 
 
 
-    @Override
-    public String toString() {
-        return Type;
-    }
+  /* @Override
+    public String toString() { return Type; }*/
 }

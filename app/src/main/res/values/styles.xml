@@ -2,9 +2,14 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorBlack</item>
+    </style>
+
+    <style name="custom_fab">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/property_detail_layout</item>
     </style>
 
 </resources>

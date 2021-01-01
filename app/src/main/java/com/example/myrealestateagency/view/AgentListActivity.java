@@ -26,6 +26,7 @@ final public class AgentListActivity extends AppCompatActivity  {
 
     private AgentListActivityViewModel viewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -42,6 +43,7 @@ final public class AgentListActivity extends AppCompatActivity  {
 
         viewModel = new ViewModelProvider(this).get(AgentListActivityViewModel.class);
 
+        //PopulateAgentTable();
         observeAgents();
         //RestoreAgentProfileSelection();
     }
@@ -53,7 +55,8 @@ final public class AgentListActivity extends AppCompatActivity  {
 
         //We init the list into the onResume method
         //so the list is updated each time the screen goes to foreground
-        viewModel.loadAgents();
+        //viewModel.loadAgents();
+        PopulateAgentTable();
     }
 
 
@@ -71,14 +74,20 @@ final public class AgentListActivity extends AppCompatActivity  {
         });
     }
 
-    /*private void RestoreAgentProfileSelection(){
-        boolean selection = viewModel.loadAgentProfile();
+    //We initialise our database one time and display all profiles on the page (case of 1st use of the app).
+    // If the database is already populated, we simply display what is already saved in the database, onto our app page.
+    private void PopulateAgentTable(){
+        boolean agent_list = viewModel.AgentsCreation();
 
-        if (selection == true){
-            final Intent intent = new Intent(this, PropertyListActivity.class);
-            startActivity(intent);
-        }*/
+        if(agent_list==true){
+            viewModel.AgentListCreation();
+            viewModel.loadAgents();
+        }else{
+            viewModel.loadAgents();
+        }
     }
+
+}
 
 
 

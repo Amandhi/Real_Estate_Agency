@@ -37,7 +37,7 @@ public final class AgentRepository  {
 
     private AgentRepository(Context context)
     {
-        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "agent-database").allowMainThreadQueries().build();
+        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "agency-database").allowMainThreadQueries().build();
     }
 
     public List<Agent> getAgents()

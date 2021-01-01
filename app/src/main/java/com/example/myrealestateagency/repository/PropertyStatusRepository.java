@@ -36,7 +36,7 @@ public class PropertyStatusRepository {
 
     private PropertyStatusRepository(Context context)
     {
-        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "propertyStatus-database").allowMainThreadQueries().build();
+        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "agency-database").allowMainThreadQueries().build();
     }
 
     public List<PropertyStatus> getStatus()
@@ -48,6 +48,7 @@ public class PropertyStatusRepository {
     {
         agencyDatabase.appDao().addStatus(pStatus);
     }
+
 
 
 

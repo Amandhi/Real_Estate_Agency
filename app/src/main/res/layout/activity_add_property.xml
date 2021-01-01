@@ -1,136 +1,315 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  As recommended by Google, we use a ConstraintLayout
-  as the root element
-  We add a padding all around using the padding attribute
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Add property form. Here the agent enters all the details needed for a property to be added in the app database. -->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".view.AddPropertyActivity"
+    >
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
-    tools:context=".view.AddPropertyActivity"
+    android:background="@color/colorWhite"
+    android:padding="10dp"
     >
 
-
+    <!-- Page icon -->
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
-        app:layout_constraintBottom_toTopOf="@id/radio_grp"
+        android:layout_marginTop="8dp"
+        android:layout_height="90dp"
+        android:src="@drawable/add_page_icon_"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread"
         />
 
-
-
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/radio_grp"
-        android:layout_width="match_parent"
+    <!-- TextView to display the name of profil used to log in-->
+    <TextView
+        android:id="@+id/agent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/surface"
+        android:layout_marginTop="8dp"
+        android:textSize="22sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--TextView to display the type of the property to add  -->
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar">
-        <TextView
-            android:id="@+id/property_type"
+        app:layout_constraintTop_toBottomOf="@id/agent"/>
+
+    <!--
+       <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+           android:id="@+id/radio_grp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           app:layout_constraintBottom_toTopOf="@id/surface"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/avatar">
+           <TextView
+               android:id="@+id/property_type"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Type"
+               app:layout_constraintBottom_toTopOf="@id/radio_grp"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/avatar"
+               />
+
+
+           <RadioButton android:id="@+id/radio_house"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="House"/>
+
+           <RadioButton android:id="@+id/radio_apt"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Appartment"/>
+
+           <RadioButton android:id="@+id/radio_office"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Office"/>
+
+       </RadioGroup>
+       -->
+
+
+
+    <!--
+        <Spinner
+            android:id="@+id/propertyTpe_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type"
-            app:layout_constraintBottom_toTopOf="@id/radio_grp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatar"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar"/>
+    -->
 
-
-        <RadioButton android:id="@+id/radio_house"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="House"/>
-
-        <RadioButton android:id="@+id/radio_apt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Appartment"/>
-
-        <RadioButton android:id="@+id/radio_office"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Office"/>
-
-    </RadioGroup>
-
-
-<!--
-    <Spinner
-        android:id="@+id/propertyTpe_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar"/>
--->
+    <!--EditText for the agent to enter the property's surface in m2  -->
     <EditText
         android:id="@+id/surface"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Surface in m2"
         android:inputType="number"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/address"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorTint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rooms"
-        app:layout_constraintTop_toBottomOf="@id/radio_grp"
+        app:layout_constraintTop_toBottomOf="@id/type"
         />
 
-
+    <!--EditText for the agent to enter the property's number of rooms  -->
     <EditText
         android:id="@+id/rooms"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Number of rooms"
         android:inputType="number"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/address"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorTint"
         app:layout_constraintStart_toEndOf="@id/surface"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_grp"
+        app:layout_constraintTop_toBottomOf="@id/type"
         />
 
-
+    <!--EditText for the agent to enter the price of the property -->
     <EditText
-        android:id="@+id/address"
+        android:id="@+id/price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Full address"
-        android:inputType="textMultiLine"
-        android:minLines="4"
-        android:lines="4"
-        app:layout_constraintBottom_toTopOf="@id/save"
+        android:layout_marginTop="8dp"
+        android:hint="Price in €"
+        android:inputType="number"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:backgroundTint="@color/colorTint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rooms"
         />
 
-
-
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
+    <!--EditText for the agent to enter the property's address  -->
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Save"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:hint="Address"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:inputType="textMultiLine"
+        android:backgroundTint="@color/colorTint"
+        android:minLines="3"
+        android:lines="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        />
+
+    <!--EditText for the agent to enter a description for the property  -->
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Description"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:inputType="textMultiLine"
+        android:backgroundTint="@color/colorTint"
+        android:minLines="4"
+        android:lines="4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/address"
         />
+
+
+    <!--Radio buttons for the agent to select the status of the property : sold or not sold   -->
+    <TextView
+        android:id="@+id/propertyStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Property status : "
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        />
+
+    <!--Radio buttons for the agent to select the status of the property : sold or not sold   -->
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio_grp_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/propertyStatus">
+
+
+        <RadioButton android:id="@+id/radio_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sold"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+        <RadioButton android:id="@+id/radio_not_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Sold"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+    </RadioGroup>
+
+    <!--Radio buttons for the agent to select an agent in charge of the property-->
+    <TextView
+        android:id="@+id/agentResponsible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Agent in charge : "
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_grp_status"
+        />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio_grp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/agentResponsible">
+
+
+        <RadioButton android:id="@+id/radio_Noah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Noah"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+        <RadioButton android:id="@+id/radio_Emma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emma"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+        <RadioButton android:id="@+id/radio_Sasha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sasha"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+        <RadioButton android:id="@+id/radio_Ivy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ivy"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+    </RadioGroup>
+
+
+    <!-- Button to save and add the property in the app  -->
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Save"
+        android:background="@drawable/rounded_corners_btn"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_grp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
+

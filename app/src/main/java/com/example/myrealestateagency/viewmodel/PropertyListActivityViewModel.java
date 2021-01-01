@@ -1,6 +1,7 @@
 package com.example.myrealestateagency.viewmodel;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,18 +20,11 @@ public final class PropertyListActivityViewModel extends AndroidViewModel {
     public MutableLiveData<List<Property>> properties = new MutableLiveData<>();
 
 
-
     public PropertyListActivityViewModel(@NonNull Application application)
     {
         super(application);
     }
 
-    public void updateOrder()
-    {
-
-
-        loadProperties();
-    }
 
 
 
@@ -40,7 +34,15 @@ public final class PropertyListActivityViewModel extends AndroidViewModel {
         properties.postValue(PropertyRepository.getInstance(getApplication()).getProperties());
     }
 
-    /*public void DisconnectResetPref(){
-        AppPreferences.removeDataFromPref(getApplication());
-    }*/
+    //Retrieve agent name saved in preferences (if any)
+    public String loadAgentName(){
+         String agentLogin = AppPreferences.getAgentSelection(getApplication());
+         return agentLogin;
+
+    }
+
+    //Remove agent name saved in preferences when agent logs out
+    public void DisconnectResetPref(){
+        AppPreferences.removeFromPreferences(getApplication());
+    }
 }

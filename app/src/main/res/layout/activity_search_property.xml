@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home page that will contain all the properties added by agents, in a view holder,
+as well as an expandable floating button to add apartments, houses or offices -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorWhite"
+    tools:context=".view.SearchPropertyActivity"
+    >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:padding="15dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/search_property"
+        app:layout_constraintEnd_toStartOf="@id/tv_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="What are you looking for ?"
+        android:textColor="@color/colorBlack"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_search"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <!--Radio buttons for the agent to select the type of the property looked for-->
+
+    <LinearLayout
+        android:id="@+id/linearLayoutType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_search"
+        >
+
+        <CheckBox android:id="@+id/checkbox_aptmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apartment"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"
+            />
+        <CheckBox android:id="@+id/checkbox_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"
+            />
+        <CheckBox android:id="@+id/checkbox_office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Office"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutType"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price (€) :"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <CheckBox android:id="@+id/checkbox_all_prices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"
+            />
+        <EditText
+            android:id="@+id/search_price_min"
+            android:inputType="number"
+            android:hint="minimum"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorTint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/search_price_max"
+            android:inputType="number"
+            android:hint="maximum"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorTint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutSurface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutPrice"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surface (m2) :"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <CheckBox android:id="@+id/checkbox_all_surfaces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"
+            />
+        <EditText
+            android:id="@+id/search_surface_min"
+            android:inputType="number"
+            android:hint="minimum"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorTint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/search_surface_max"
+            android:inputType="number"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorTint"
+            android:hint="maximum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRooms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSurface"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of rooms :"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:textStyle="bold"
+           />
+        <CheckBox android:id="@+id/checkbox_all_rooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:text="Any"
+            android:buttonTint="@color/colorTint"
+            />
+        <EditText
+            android:id="@+id/search_rooms"
+            android:inputType="number"
+            android:hint="enter number"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorTint"/>
+
+    </LinearLayout>
+
+<!--
+    Radio buttons for the agent to select the status of the property : sold or not sold
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radio_grp_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutRooms"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <RadioButton android:id="@+id/radio_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sold"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+        <RadioButton android:id="@+id/radio_not_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Sold"
+            android:textColor="@color/colorBlack"
+            android:buttonTint="@color/colorTint"/>
+
+    </RadioGroup>
+    -->
+
+
+    <!--
+    <LinearLayout
+        android:id="@+id/linearLayoutDates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutRooms"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Added date from :"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/search_added_date"
+            android:inputType="date"
+            android:hint="enter date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update date from :"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/search_updated_date"
+            android:inputType="date"
+            android:hint="enter date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+    -->
+
+    <!-- Button to search  -->
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Search"
+        android:background="@drawable/rounded_corners_btn"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutRooms"/>
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        />
+    <!--app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

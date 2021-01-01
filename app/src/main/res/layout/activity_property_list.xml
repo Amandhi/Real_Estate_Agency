@@ -1,37 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  As recommended by Google, we use a ConstraintLayout
-  as the root element
-  We add a padding all around using the padding attribute
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home page that will contain all the properties added by agents, in a view holder,
+as well as an expandable floating button to add apartments, houses or offices -->
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".view.PropertyListActivity"
     >
+
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="test"
+            android:visibility="invisible"
+            />
+
+
+
+
+    <!-- ImageView to display the avatar according to the profile used to log in  -->
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/agentProfile_Name"
+        />
+
+    <!--TextView to display the agent's name according to the profile used to log in -->
+    <TextView
+        android:id="@+id/agentProfile_Name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Logged is as "
+        android:textSize="20sp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="125dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/agentProfile_Name"
         />
+    <!--app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+
+
+    <!-- Expandable floating button. Enables to add a property amongst the following choices : apartment, house, office  -->
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/colorAccent"
-        app:fabSize="normal"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:fab_addButtonColorNormal="@color/colorAddButton"
+        app:fab_addButtonColorPressed="@color/colorPressedAddButton"
+        app:fab_addButtonPlusIconColor="@color/colorWhite"
+        app:fab_labelStyle="@style/custom_fab">
+
+        <!-- Button to add an appartment -->
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabApartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorWhite"
+            app:fab_colorPressed="#f1f1f1"
+            app:fab_icon="@drawable/building"
+            app:fab_size="mini"
+            app:fab_title="Apartment">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+        <!-- Button to add a house -->
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabHouse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorWhite"
+            app:fab_colorPressed="#f1f1f1"
+            app:fab_icon="@drawable/house"
+            app:fab_size="mini"
+            app:fab_title="House">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+        <!-- Button to add an office -->
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabOffice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorWhite"
+            app:fab_colorPressed="#f1f1f1"
+            app:fab_icon="@drawable/briefcase"
+            app:fab_size="mini"
+            app:fab_title="Office">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,10 +27,4 @@ public interface IPropertyService {
      */
     void addProperty(Property property);
 
-    /**
-     * Update a property
-     *
-     * @return {@link List}
-     */
-    //List<Property> updateProperty();
 }

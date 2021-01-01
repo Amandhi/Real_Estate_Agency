@@ -32,11 +32,22 @@ public final class AgentListActivityViewModel extends AndroidViewModel {
     {
 
         super(application);
-        AgentListCreation();
+
+    }
+
+    //Check needed to make sure we initialise our agent database only one time
+    public boolean AgentsCreation(){
+        boolean agent_list_state=false;
+        final List<Agent> agents = AgentRepository.getInstance(getApplication()).getAgents();
+        if(agents.isEmpty()){
+            agent_list_state = true;
+            return agent_list_state;
+        }
+        return agent_list_state;
     }
 
 
-
+    //Creation of our agent database
     public void AgentListCreation(){
         AgentRepository.getInstance(getApplication()).addAgent(agentNoah);
         AgentRepository.getInstance(getApplication()).addAgent(agentEmma);
@@ -53,29 +64,6 @@ public final class AgentListActivityViewModel extends AndroidViewModel {
         agents.postValue(AgentRepository.getInstance(getApplication()).getAgents());
     }
 
-    /*public void saveAgentLogin(String name)
-    {
-        //We save only if there is something to save
-       // if (TextUtils.isEmpty(name) == false)
-        {
-            AppPreferences.saveAgentSelection(getApplication(), name);
-        }
-    }
-
-    public boolean loadAgentProfile()
-    {
-        boolean profile_selection = false;
-        //We retrieve the name store into the shared preferences
-        final String agentName = AppPreferences.getAgentSelection(getApplication());
-
-        //if the name is not null we restore it
-        if (TextUtils.isEmpty(agentName) == false)
-        {
-            profile_selection = true;
-            return profile_selection;
-        }
-        return profile_selection;
-    }*/
 
 
 }

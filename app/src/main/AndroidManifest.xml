@@ -4,9 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.AgentListActivity">
@@ -19,17 +18,36 @@
 
 
 
+        <!-- Home Page (Property list)-->
         <activity
+            android:label="@string/property_list_page_title"
             android:name=".view.PropertyListActivity"
             />
 
+        <!-- Add Property Page -->
         <activity
+            android:label="@string/add_property_page_title"
             android:name=".view.AddPropertyActivity"
             android:parentActivityName=".view.PropertyListActivity"
             />
 
+        <!-- Property Detail Page -->
         <activity
+            android:label="@string/detail_property_page_title"
             android:name=".view.PropertyDetailActivity"
+            android:parentActivityName=".view.PropertyListActivity"
+            />
+
+        <!-- Update Property Page-->
+        <activity
+            android:label="@string/update_property_page_title"
+            android:name=".view.UpdatePropertyActivity"
+            android:parentActivityName=".view.PropertyListActivity"
+            />
+
+        <activity
+            android:label="@string/search_property_page_title"
+            android:name=".view.SearchPropertyActivity"
             android:parentActivityName=".view.PropertyListActivity"
             />
     </application>

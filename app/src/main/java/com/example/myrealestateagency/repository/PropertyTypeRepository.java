@@ -35,7 +35,7 @@ public class PropertyTypeRepository {
 
     private PropertyTypeRepository(Context context)
     {
-        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "propertyType-database").allowMainThreadQueries().build();
+        agencyDatabase = Room.databaseBuilder(context, RealEstateAgencyDatabase.class, "agency-database").allowMainThreadQueries().build();
     }
 
     public List<PropertyType> getType()
