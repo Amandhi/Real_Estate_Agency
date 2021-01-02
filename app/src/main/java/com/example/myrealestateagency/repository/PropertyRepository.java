@@ -49,7 +49,7 @@ public final class PropertyRepository {
         agencyDatabase.appDao().addProperty(property);
     }
 
-    public void updateProperty(int propertyID, String propertyType, float propertyPrice, int propertySurface, int propertyRooms, String propertyAddress, String propertyDescription, String propertyStatus, String propertyAgentInCharge)
+    public void updateProperty(int propertyID, String propertyType, Double propertyPrice, Integer propertySurface, Integer propertyRooms, String propertyAddress, String propertyDescription, String propertyStatus, String propertyAgentInCharge)
     {
         agencyDatabase.appDao().updateProperty(propertyID, propertyType, propertyPrice, propertySurface, propertyRooms, propertyAddress, propertyDescription, propertyStatus,propertyAgentInCharge);
     }

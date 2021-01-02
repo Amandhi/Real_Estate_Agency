@@ -68,7 +68,7 @@ public interface AppDao extends IPropertyService, IAgentService, IPropertyStatus
 
     //Update registered property
     @Query("UPDATE Property SET PropertyType = :updatedType, Price = :updatedPrice, PropertySurface = :updatedSurface, Number_of_Rooms = :updatedRooms, Address = :updatedAddress, Description = :updatedDescription, PropertyStatus = :updatedStatus, Agent_in_charge = :updatedAgentInCharge WHERE PropertyID = :propertyID")
-    void updateProperty(int propertyID, String updatedType, float updatedPrice, int updatedSurface, int updatedRooms, String updatedAddress, String updatedDescription, String updatedStatus, String updatedAgentInCharge);
+    void updateProperty(int propertyID, String updatedType, Double updatedPrice, Integer updatedSurface, Integer updatedRooms, String updatedAddress, String updatedDescription, String updatedStatus, String updatedAgentInCharge);
 
 
 }

@@ -47,10 +47,10 @@ public class Property implements Serializable {
 
     @NonNull
     @ColumnInfo(name = "Price")
-    public Integer Price;
+    public Double Price;
 
     @NonNull
-    public Integer getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
@@ -77,6 +77,11 @@ public class Property implements Serializable {
     public String Address;
 
     @NonNull
+    public String getAddress() {
+        return Address;
+    }
+
+    @NonNull
     @ColumnInfo(name = "Description")
     public String Description;
 
@@ -98,7 +103,7 @@ public class Property implements Serializable {
         Agent_in_charge = agent_in_charge;
     }
 */
-    public Property(String PropertyType, Integer Price, Integer PropertySurface, Integer Number_of_Rooms, @NonNull String Address, String Description, String PropertyStatus, String Agent_in_charge) {
+    public Property(String PropertyType, Double Price, Integer PropertySurface, Integer Number_of_Rooms, @NonNull String Address, String Description, String PropertyStatus, String Agent_in_charge) {
         PropertyID=0;
         this.PropertyType=PropertyType;
         this.Price=Price;

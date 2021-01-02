@@ -107,6 +107,15 @@ final public class PropertyListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //We configure the click on the Map fab to view all saved properties on a map with a blue or red pin
+        findViewById(R.id.fabMap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //We open the MapsActivity screen when the agent clicks on the FAB
+                final Intent intent = new Intent(PropertyListActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         viewModel = new ViewModelProvider(this).get(PropertyListActivityViewModel.class);
 

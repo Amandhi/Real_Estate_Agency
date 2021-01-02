@@ -29,7 +29,7 @@ This page opens up when the user clicks on a property view holder from the home 
          android:textColor="@color/colorBlack"
          app:layout_constraintTop_toTopOf="parent"
          app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintEnd_toStartOf="@id/btn_simulator"
           />
 
         <!-- ImageView to display the icon according to the type of the property -->
@@ -303,12 +303,12 @@ This page opens up when the user clicks on a property view holder from the home 
             android:id="@+id/btn_simulator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_margin="10dp"
             android:text="Simulator"
             android:textColor="@color/colorWhite"
             android:background="@drawable/rounded_corners_btn"
-            app:layout_constraintTop_toBottomOf="@id/agentInCharge"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/agentLoggedIn"
             app:layout_constraintEnd_toEndOf="parent"/>
 
 
@@ -326,7 +326,7 @@ This page opens up when the user clicks on a property view holder from the home 
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_simulator"
+            app:layout_constraintTop_toBottomOf="@id/agentInCharge"
 
 
             />

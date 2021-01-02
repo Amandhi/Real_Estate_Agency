@@ -180,7 +180,8 @@ final public class PropertyDetailActivity extends AppCompatActivity implements V
             //viewModel.updateProperty();
             String ID = propertyID.getText().toString().substring(19);
             String typeUpdate = propertyType.getText().toString().substring(7);
-            String priceUpdate = propertyPrice.getText().toString().replaceAll("[^0-9]", "");
+            String pPrice = propertyPrice.getText().toString().substring(8);
+            String priceUpdate = pPrice.substring(0, pPrice.length() - 2);
             String surface = propertySurface.getText().toString().substring(10);
             String surfaceUpdate = surface.substring(0, surface.length() - 3);
             String roomsUpdate= propertyRooms.getText().toString().substring(18);
@@ -227,7 +228,7 @@ final public class PropertyDetailActivity extends AppCompatActivity implements V
                 setAgentInChargeIcon(property.Agent_in_charge);
 
                 String address = propertyAddress.getText().toString().substring(10);
-                ArrayList<String> results = viewModel.getLatitudeLongitude(address, getApplicationContext());
+                ArrayList<Double> results = viewModel.getLatitudeLongitude(address, getApplicationContext());
                 propertyLatLong.setText("Latitude : " + results.get(0) + "\nLongitude : " +results.get(1));
 
                propertyCreationDate.setText("Created on : "+ AppPreferences.getCreationDateTime(getApplication()));
@@ -345,36 +346,40 @@ final public class PropertyDetailActivity extends AppCompatActivity implements V
     }
 
 
+    //When clicking on "$ convert" button from a property's "Detail Page", we get the price initially in €, in $
+    //The conversion is done by calling an API
     @Override
     public void onClick(View view) {
+
         switch (view.getId()){
             case R.id.btn_price_converter:
-                //final String propertyPrice€ = propertyPrice.getText().toString().substring(8);
-                final String propertyPrice€ = propertyPrice.getText().toString().replaceAll("[^0-9]", "");
+                String priceToconvert = propertyPrice.getText().toString().substring(8);
+                String pToConvert = priceToconvert.substring(0, priceToconvert.length() - 2);
                 RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
                 Call<JsonObject> call = retrofitInterface.getPriceConversion();
                 call.enqueue(new Callback<JsonObject>() {
-                @Override
-                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                    JsonObject res = response.body();
-                    JsonObject rates = res.getAsJsonObject("rates");
-                    double price€ = Double.valueOf(propertyPrice€);
-                    double multiplier = Double.valueOf(rates.get("USD").toString());
-                    double price$ = price€*multiplier;
-                    convertedPrice.setText(new DecimalFormat("##.##").format(price$) + " $");
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        JsonObject res = response.body();
+                        JsonObject rates = res.getAsJsonObject("rates");
+                        double price€ = Double.valueOf(pToConvert);
+                        double multiplier = Double.valueOf(rates.get("USD").toString());
+                        double price$ = price€*multiplier;
+                        convertedPrice.setText(" "+new DecimalFormat("##.##").format(price$) + " $");
 
-                }
 
-                @Override
-                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    }
 
-                }
-            });
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                    }
+                });
                  break;
 
             case R.id.btn_simulator:
                 final String pType = propertyType.getText().toString().substring(7);
-                final String pPrice = propertyPrice.getText().toString().replaceAll("[^0-9]", "");
+                final String pPrice = propertyPrice.getText().toString().substring(8);
                 final String pID = propertyID.getText().toString();
 
                 final Intent intent = new Intent(this, LoanSimulatorActivity.class);

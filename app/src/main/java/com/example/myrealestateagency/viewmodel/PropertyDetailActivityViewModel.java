@@ -1,28 +1,27 @@
 package com.example.myrealestateagency.viewmodel;
 
-import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myrealestateagency.bo.Property;
-import com.example.myrealestateagency.preferences.AppPreferences;
-import com.example.myrealestateagency.repository.PropertyRepository;
+import com.example.myrealestateagency.retrofit.RetrofitBuilder;
+import com.example.myrealestateagency.retrofit.RetrofitInterface;
 import com.example.myrealestateagency.view.PropertyDetailActivity;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public final class PropertyDetailActivityViewModel extends ViewModel {
@@ -45,12 +44,40 @@ public final class PropertyDetailActivityViewModel extends ViewModel {
         return delete_request;
     }
 
+    //Method to enable price conversion
+    /*public void PriceConverter(String propertyPrice){
+        RetrofitInterface retrofitInterface = RetrofitBuilder.getRetrofitInstance().create(RetrofitInterface.class);
+        Call<JsonObject> call = retrofitInterface.getPriceConversion();
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                JsonObject res = response.body();
+                JsonObject rates = res.getAsJsonObject("rates");
+                double price€ = Double.valueOf(propertyPrice);
+                double multiplier = Double.valueOf(rates.get("USD").toString());
+                double price$ = price€*multiplier;
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+
+
+
+    }*/
+
+
+
     //Method to get latitude et longitude of a property according to its address
-    public ArrayList<String>  getLatitudeLongitude(final String locationAddress, final Context context) {
+    public ArrayList<Double>  getLatitudeLongitude(final String locationAddress, final Context context) {
         Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-        ArrayList<String> results = new ArrayList<>();
-        String resultLat = null;
-        String resultLong = null;
+        ArrayList<Double> results = new ArrayList<>();
+
         try {
             List addressList = geocoder.getFromLocationName(locationAddress, 1);
             if (addressList != null & addressList.size() > 0) {
@@ -59,8 +86,8 @@ public final class PropertyDetailActivityViewModel extends ViewModel {
                 StringBuilder stringBuilderLong = new StringBuilder();
                 stringBuilderLat.append(address.getLatitude());
                 stringBuilderLong.append(address.getLongitude());
-                resultLat = stringBuilderLat.toString();
-                resultLong = stringBuilderLong.toString();
+                double resultLat = Double.valueOf(stringBuilderLat.toString());
+                double resultLong = Double.valueOf(stringBuilderLong.toString());
                 results.add(resultLat);
                 results.add(resultLong);
 

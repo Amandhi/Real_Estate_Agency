@@ -153,9 +153,9 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
     public void onClick(View view) {
         int ID = Integer.parseInt(propertyID.getText().toString().substring(19));
         String typeUpdate = propertyType.getText().toString();
-        Integer priceUpdate = Integer.parseInt(propertyPrice.getText().toString());
-        Integer surfaceUpdate = Integer.parseInt(propertySurface.getText().toString());
-        Integer roomsUpdate = Integer.parseInt(propertyRooms.getText().toString());
+        Double priceUpdate = viewModel.CheckDouble(propertyPrice.getText().toString());
+        Integer surfaceUpdate = viewModel.CheckInteger(propertySurface.getText().toString());
+        Integer roomsUpdate = viewModel.CheckInteger(propertyRooms.getText().toString());
         String addressUpdate = propertyAddress.getText().toString();
         String descriptionUpdate = propertyDescription.getText().toString();
         //String agentInChargeUpdate = propertyAgentInCharge.getText().toString();
@@ -182,7 +182,7 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
         viewModel.event.observe(this, new Observer<UpdatePropertyActivityViewModel.Event>() {
             @Override
             public void onChanged(UpdatePropertyActivityViewModel.Event event) {
-                if (event == UpdatePropertyActivityViewModel.Event.DisplayTypeError) {
+                /*if (event == UpdatePropertyActivityViewModel.Event.DisplayTypeError) {
                     displayTypeError();
                 }
                 if (event == UpdatePropertyActivityViewModel.Event.DisplayPriceError) {
@@ -205,7 +205,7 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
                 }
                 if (event == UpdatePropertyActivityViewModel.Event.DisplayAgentError) {
                     displayAgentError();
-                }
+                }*/
                 if (event == UpdatePropertyActivityViewModel.Event.DisplayBlankFieldError) {
                     displayBlankFieldError();
                 }
@@ -213,7 +213,7 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
         });
     }
 
-    private void displayTypeError() {
+    /*private void displayTypeError() {
         Toast.makeText(this, R.string.enter_valid_type, Toast.LENGTH_SHORT).show();
     }
 
@@ -243,7 +243,7 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
 
     private void displayAgentError() {
         Toast.makeText(this, R.string.enter_valid_agent, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     private void displayBlankFieldError() {
         Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
@@ -252,7 +252,7 @@ final public class UpdatePropertyActivity extends AppCompatActivity implements V
 
     //Successful updation notification when an agent correctly updated a property
     public void DisplayUpdateNotification() {
-        String canAdd = viewModel.checkFormEntries(propertyType.getText().toString(), Integer.parseInt(propertyPrice.getText().toString()), Integer.parseInt(propertySurface.getText().toString()), Integer.parseInt(propertyRooms.getText().toString()), propertyAddress.getEditableText().toString(), propertyDescription.getEditableText().toString());
+        String canAdd = viewModel.checkFormEntries(viewModel.CheckDouble(propertyPrice.getText().toString()), viewModel.CheckInteger(propertySurface.getText().toString()), viewModel.CheckInteger(propertyRooms.getText().toString()), propertyAddress.getEditableText().toString(), propertyDescription.getEditableText().toString());
         if (canAdd.equals("valid")) {
             final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
             final String notificationChannelId = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O ? "MyChannel" : null;

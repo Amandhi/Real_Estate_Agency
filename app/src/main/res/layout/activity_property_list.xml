@@ -116,6 +116,19 @@ as well as an expandable floating button to add apartments, houses or offices --
 
         </com.getbase.floatingactionbutton.FloatingActionButton>
 
+        <!-- Button to see properties on map -->
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorWhite"
+            app:fab_colorPressed="#f1f1f1"
+            app:fab_icon="@drawable/maps"
+            app:fab_size="mini"
+            app:fab_title="Map">
+
+        </com.getbase.floatingactionbutton.FloatingActionButton>
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 

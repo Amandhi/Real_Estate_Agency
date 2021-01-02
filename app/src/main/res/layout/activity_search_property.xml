@@ -82,6 +82,7 @@ as well as an expandable floating button to add apartments, houses or offices --
             />
     </LinearLayout>
 
+    <!-- Space for the agent to search a property by price-->
     <LinearLayout
         android:id="@+id/linearLayoutPrice"
         android:layout_width="match_parent"
@@ -126,6 +127,7 @@ as well as an expandable floating button to add apartments, houses or offices --
             />
     </LinearLayout>
 
+    <!-- Space for the agent to search a property by surface-->
     <LinearLayout
         android:id="@+id/linearLayoutSurface"
         android:layout_width="match_parent"
@@ -168,6 +170,7 @@ as well as an expandable floating button to add apartments, houses or offices --
 
     </LinearLayout>
 
+    <!-- Space for the agent to search a property by number of rooms-->
     <LinearLayout
         android:id="@+id/linearLayoutRooms"
         android:layout_width="match_parent"

@@ -71,13 +71,13 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
 
     //Here we check the agent's entries on the "Add property form", if correctly filled we add the property into the app's database,
     // else we display message on screen to correctly fill the form.
-    public void saveProperty(String propertyType, Integer propertyPrice, Integer propertySurface, Integer propertyRooms,
+    public void saveProperty(String propertyType, Double propertyPrice, Integer propertySurface, Integer propertyRooms,
                          String propertyAddress, String propertyDescription, String propertyAgent, RadioGroup agentInChargeSelection, String propertyStatus, RadioGroup StatusSelection)
     {
 
 
         //We check if all entries are valid (not null and not empty)
-        final String canAddProperty = checkFormEntries(propertyType, propertyPrice, propertySurface, propertyRooms, propertyAddress, propertyDescription, StatusSelection, agentInChargeSelection);
+        final String canAddProperty = checkFormEntries(propertyPrice, propertySurface, propertyRooms, propertyAddress, propertyDescription, StatusSelection, agentInChargeSelection);
 
 
         if (canAddProperty.equals("valid"))
@@ -144,13 +144,13 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
 
     }
 
-    private void persistProperty(String propertyType, Integer propertyPrice, Integer propertySurface, Integer propertyRooms,
+    private void persistProperty(String propertyType, Double propertyPrice, Integer propertySurface, Integer propertyRooms,
                                  String propertyAddress, String propertyDescription, String propertyStatus, String propertyAgent)
     {
         PropertyRepository.getInstance(getApplication()).addProperty(new Property(propertyType, propertyPrice, propertySurface, propertyRooms, propertyAddress, propertyDescription, propertyStatus, propertyAgent));
     }
 
-    public String checkFormEntries(String propertyType, Integer propertyPrice, Integer propertySurface, Integer propertyRooms, String propertyAddress, String propertyDescription, RadioGroup agentInChargeSelection, RadioGroup StatusSelection)
+    public String checkFormEntries(Double propertyPrice, Integer propertySurface, Integer propertyRooms, String propertyAddress, String propertyDescription, RadioGroup agentInChargeSelection, RadioGroup StatusSelection)
     {
         String entrieschecked = "valid";
         /*ArrayList<String> allowed_property_types = new ArrayList<>();
@@ -230,23 +230,15 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
             //String agentSelection = null;
         }*/
 
-        if (propertySurface == 0 || propertyPrice == 0  || propertyRooms == 0 || TextUtils.isEmpty(propertyAddress)|| agentInChargeSelection.getCheckedRadioButtonId()==-1 || StatusSelection.getCheckedRadioButtonId()==-1 ){
+        if (propertySurface == null || propertyPrice == null  || propertyRooms == null || TextUtils.isEmpty(propertyAddress)|| agentInChargeSelection.getCheckedRadioButtonId()==-1 || StatusSelection.getCheckedRadioButtonId()==-1 ){
 
                 entrieschecked = "Please fill in all the fields";
-
-                //Log.i("allowed types : ", String.valueOf(allowed_property_types));
-                //Log.i("entered type : ", String.valueOf(userpType));
-                //return entrieschecked;
         }
 
 
-       if (propertyPrice == 0 && propertySurface == 0 && propertyRooms == 0 && TextUtils.isEmpty(propertyAddress) && TextUtils.isEmpty(propertyDescription) && agentInChargeSelection.getCheckedRadioButtonId()==-1 && StatusSelection.getCheckedRadioButtonId()==-1 ){
+       if (propertyPrice == null && propertySurface == null && propertyRooms == null && TextUtils.isEmpty(propertyAddress) && TextUtils.isEmpty(propertyDescription) && agentInChargeSelection.getCheckedRadioButtonId()==-1 && StatusSelection.getCheckedRadioButtonId()==-1 ){
 
             entrieschecked = "Please fill in all the fields";
-
-            //Log.i("allowed types : ", String.valueOf(allowed_property_types));
-            //Log.i("entered type : ", String.valueOf(userpType));
-            //return entrieschecked;
         }
 
 
@@ -343,20 +335,49 @@ public final class AddPropertyActivityViewModel extends AndroidViewModel {
     }
 
     //Check input and catch exception is this field is empty
-    public Integer Check(String value){
+    public Double CheckDouble(String value){
+        Double a;
+       /* if(value.isEmpty()){
+            return 0;
+        }else {
+            return 0;
+        }*/
+        if (value != null && value.length() > 0){
+            try {
+                a = Double.parseDouble(value);
+                return a;
+            }catch(java.lang.NumberFormatException e){
+                return null;
+
+            }
+        }else{
+            return null;
+        }
+
+
+    }
+
+
+    public Integer CheckInteger(String value){
         Integer a;
        /* if(value.isEmpty()){
             return 0;
         }else {
             return 0;
         }*/
-        try {
-             a = Integer.parseInt(value);
-        }catch(java.lang.NumberFormatException e){
-           a= 0;
-            //request for well-formatted string
+        if (value != null && value.length() > 0){
+            try {
+                a = Integer.parseInt(value);
+                return a;
+            }catch(NumberFormatException e){
+                return null;
+
+            }
+        }else{
+            return null;
         }
-        return a;
+
+
     }
 
 

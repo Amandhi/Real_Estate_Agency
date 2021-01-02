@@ -49,7 +49,7 @@ public class LoanSimulatorActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
 
-        double loan = Integer.parseInt(loanPrice.getText().toString());
+        double loan = Double.parseDouble(loanPrice.getText().toString());
         double rate = Integer.parseInt(loanRate.getText().toString());
         double duration = Integer.parseInt(loanDuration.getText().toString());
 
@@ -70,7 +70,7 @@ public class LoanSimulatorActivity extends AppCompatActivity implements View.OnC
         if (extras != null) {
 
             propertyID.setText(extras.getString("pID"));
-            propertyPrice.setText("Price : "+ extras.getString("pPrice")+ " €");
+            propertyPrice.setText("Price : "+ extras.getString("pPrice"));
             String type = extras.getString("pType");
             restorePropertyIcon(type);
 

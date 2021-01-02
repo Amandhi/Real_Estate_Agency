@@ -213,9 +213,9 @@ final public class AddPropertyActivity extends AppCompatActivity implements View
     public void onClick(View v) {
         //we first retrieve user's entries
 
-        final Integer pPrice = viewModel.Check(propertyPrice.getText().toString());
-        final Integer pSurface = viewModel.Check(propertySurface.getText().toString());
-        final Integer pRooms = viewModel.Check(propertyRooms.getText().toString());
+        final Double pPrice = viewModel.CheckDouble(propertyPrice.getText().toString());
+        final Integer pSurface = viewModel.CheckInteger(propertySurface.getText().toString());
+        final Integer pRooms = viewModel.CheckInteger(propertyRooms.getText().toString());
 
         final String pAddress = propertyAddress.getText().toString();
         final String pDescription = propertyDescription.getText().toString();
@@ -252,7 +252,7 @@ final public class AddPropertyActivity extends AppCompatActivity implements View
 
     //Method to display notification when agent creates a property
     public void DisplayAddNotification(){
-        String canAdd = viewModel.checkFormEntries(propertyType.getText().toString(),Integer.parseInt(propertyPrice.getText().toString()), Integer.parseInt(propertySurface.getText().toString()), Integer.parseInt(propertyRooms.getText().toString()), propertyAddress.getEditableText().toString(), propertyDescription.getEditableText().toString(), radiogrp, radiogrpStatus);
+        String canAdd = viewModel.checkFormEntries(viewModel.CheckDouble(propertyPrice.getText().toString()), viewModel.CheckInteger(propertySurface.getText().toString()), viewModel.CheckInteger(propertyRooms.getText().toString()), propertyAddress.getEditableText().toString(), propertyDescription.getEditableText().toString(), radiogrp, radiogrpStatus);
         if(canAdd.equals("valid")){
             final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
             final String notificationChannelId = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O ? "MyChannel" : null;
