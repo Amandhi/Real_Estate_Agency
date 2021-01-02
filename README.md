@@ -12,7 +12,7 @@ This page has also an acces to functionnalities such as the updation or deletion
 * MapsActivity : enables the user to view all the properties saved on the app, on Google Maps. Sold properties will appear with a red pin, not sold ones, with a blue pin.
 * LoanSimulatorActivity : enables the user to simulate a real estate loan : by filling a form, the app indicates the monthly and total payments to a specific loan process.
 
-All according activities to the above ones, implementing methods are containes in Viewmodel.
+All according activities to the above ones, implementing methods are contained in Viewmodel.
 
 and finally the project contains the following xml layouts :
 * activity_agent_list.xml
